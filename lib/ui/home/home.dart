@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:gad_loja/model/info_home.dart';
 import 'package:gad_loja/model/my_banner.dart';
@@ -7,6 +8,7 @@ import 'package:gad_loja/persistence/api_provider.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:gad_loja/ui/home/widgets/card_item.dart';
+import 'package:gad_loja/ui/navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
@@ -55,15 +57,15 @@ class _HomeState extends State<Home> {
                 ),
           deudas.isNotEmpty
               ? SliverToBoxAdapter(
-                  child: Center(child: Consumer<CartModel>(
-                    builder: (context, cart, child) {
-                      return Text("Total price: ${cart.totalPrice}");
-                    }
-                  )),
+                  child: Center(child:
+                      Consumer<CartModel>(builder: (context, cart, child) {
+                    return Text("Total price: ${cart.totalPrice}");
+                  })),
                 )
               : const SliverToBoxAdapter()
         ],
       ),
+      //bottomNavigationBar: MyNavigationBar() ,
     );
   }
 
@@ -72,9 +74,21 @@ class _HomeState extends State<Home> {
     parsedJson = await ApiProvider.getHome();
     infoHome = InfoHome.fromJson(parsedJson);
 
+    List<MyItem> currentCart =
+        Provider.of<CartModel>(context, listen: false).myItems;
+    deudas = infoHome.deudas;
+
+    deudas.forEach((elementDeudas) {
+      currentCart.forEach((elementCart) {
+        if (elementCart.id == elementDeudas.id) {
+          elementDeudas.isAdd = true;
+        }
+      });
+    });
+
     setState(() {
       banners = infoHome.banners;
-      deudas = infoHome.deudas;
+      //deudas = infoHome.deudas;
       loadingBanners = false;
     });
     print("aqui");

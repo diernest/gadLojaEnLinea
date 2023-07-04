@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gad_loja/model/provider/cart.dart';
 import 'package:gad_loja/ui/home/home.dart';
+import 'package:gad_loja/ui/navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const Home(),
+      home: MyNavigationBar(current: 0),      
     );
   }
 }

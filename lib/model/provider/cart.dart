@@ -12,6 +12,9 @@ class CartModel extends ChangeNotifier {
   int get totalPrice =>
       items.fold(0, (total, current) => total + current.value);
 
+
+  int get totalItems => items.length;
+
   /// Adds [item] to cart. This is the only way to modify the cart from outside.
   void add(MyItem item) {
     items.add(item);

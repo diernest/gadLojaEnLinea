@@ -8,7 +8,6 @@ class InfoHome {
 
   InfoHome.fromJson(Map<String, dynamic> parsedJson) {
     print(parsedJson);
-
     banners = [];
     for (int i = 0; i < parsedJson['banners'].length; i++) {
       MyBanner result = MyBanner.fromJson(parsedJson['banners'][i]);
