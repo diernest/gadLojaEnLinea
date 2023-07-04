@@ -1,0 +1,94 @@
+{
+    "banners" : [
+        {
+            "url" : "https://invoyager.com/wp-content/uploads/Puerta-de-entrada-a-la-Ciudad-de-Loja-1024x696.jpg",
+            "description" : "No debe reprimirse el pasado sino elevarlo a la comprensión"
+        },
+        {
+            "url" : "https://www.loja.gob.ec/files/noticias/2018/08/loja.jpg",
+            "description" : "Ser libre obliga a dejar en libertad a los demás"
+        },
+        {
+            "url" : "https://franciscanos.ec/wp/wp-content/uploads/2017/05/images_dondestamos_loja-san-jose.jpg",
+            "description" : "San José, Loja – Franciscanos en Ecuador"
+        }
+    ],
+    "deudas" : [
+        {
+            "id" : 12,
+            "icon" : "agua.png",
+            "title" : "Agua",
+            "value" : 12
+        },
+        {
+            "id" : 13,
+            "icon" : "multas_transito.png",
+            "title" : "Multas Tránsito",
+            "value" : 8
+        },
+        {
+            "id" : 14,
+            "icon" : "patente.png",
+            "title" : "Patente",
+            "value" : 5
+        },
+        {
+            "id" : 15,
+            "icon" : "alcabalas.png",
+            "title" : "Alcabalas",
+            "value" : 35
+        }
+    ],
+    "servicios" : [
+        {
+            "id" : 2,
+            "icon" : "agua.png",
+            "title" : "Predio Urbano"
+        },
+        {
+            "id" : 3,
+            "icon" : "multas_transito.png",
+            "title" : "Imp. Activos"
+        },
+        {
+            "id" : 4,
+            "icon" : "patente.png",
+            "title" : "Predio Rústico"
+        },
+        {
+            "id" : 5,
+            "icon" : "alcabalas.png",
+            "title" : "Pavimentaciòn"
+        },
+        {
+            "id" : 12,
+            "icon" : "agua.png",
+            "title" : "Agua"
+        },
+        {
+            "id" : 13,
+            "icon" : "multas_transito.png",
+            "title" : "Multas Tránsito"
+        },
+        {
+            "id" : 14,
+            "icon" : "patente.png",
+            "title" : "Patente"
+        },
+        {
+            "id" : 15,
+            "icon" : "alcabalas.png",
+            "title" : "Alcabalas"
+        },
+        {
+            "id" : 16,
+            "icon" : "patente.png",
+            "title" : "CEM"
+        },
+        {
+            "id" : 17,
+            "icon" : "alcabalas.png",
+            "title" : "Solares no Edif"
+        }
+    ]
+}
