@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gad_loja/model/my_item.dart';
+import 'package:gad_loja/model/provider/cart.dart';
+import 'package:provider/provider.dart';
 
 class CardItem extends StatelessWidget {
   final MyItem myItem;
@@ -23,7 +25,14 @@ class CardItem extends StatelessWidget {
               myItem.value > 0
                   ? InkWell(
                       onTap: () {
-                        print("agregar a carrito");
+                        var cart = context.read<CartModel>();
+                        if (myItem.isAdd) {
+                          myItem.isAdd = false;
+                          cart.remove(myItem);
+                        } else {
+                          myItem.isAdd = true;
+                          cart.add(myItem);
+                        }
                       },
                       child: Align(
                         alignment: Alignment.topCenter,
@@ -37,11 +46,16 @@ class CardItem extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10))),
                           width: double.infinity,
                           height: 40,
-                          child: Center(
-                              child: Text(
-                            myItem.isAdd ? "Quitar -" : "Agregar +",
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          )),
+                          child: Center(child: Consumer<CartModel>(
+                              builder: (context, cart, child) {
+                            return Text(
+                              myItem.isAdd ? "REMOVER -" : "AGREGAR +",
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            );
+                          })),
                         ),
                       ),
                     )

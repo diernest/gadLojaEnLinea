@@ -1,16 +1,13 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:gad_loja/model/info_home.dart';
 import 'package:gad_loja/model/my_banner.dart';
 import 'package:gad_loja/model/my_item.dart';
-
+import 'package:gad_loja/model/provider/cart.dart';
 import 'package:gad_loja/persistence/api_provider.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:gad_loja/ui/home/widgets/card_item.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -56,11 +53,15 @@ class _HomeState extends State<Home> {
                     childCount: deudas.length,
                   ),
                 ),
-          deudas.length > 0
+          deudas.isNotEmpty
               ? SliverToBoxAdapter(
-                  child: Center(child: Text("Pagar")),
+                  child: Center(child: Consumer<CartModel>(
+                    builder: (context, cart, child) {
+                      return Text("Total price: ${cart.totalPrice}");
+                    }
+                  )),
                 )
-              : SliverToBoxAdapter()
+              : const SliverToBoxAdapter()
         ],
       ),
     );

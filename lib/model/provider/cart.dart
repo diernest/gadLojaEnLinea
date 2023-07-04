@@ -1,9 +1,7 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:gad_loja/model/my_item.dart';
 
 class CartModel extends ChangeNotifier {
-  
   /// Internal, private state of the cart. Stores the ids of each item.
   final List<MyItem> items = [];
 
