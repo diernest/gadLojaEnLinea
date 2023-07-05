@@ -43,52 +43,62 @@
         {
             "id" : 2,
             "icon" : "agua.png",
-            "title" : "Predio Urbano"
-        },
-        {
-            "id" : 3,
-            "icon" : "multas_transito.png",
-            "title" : "Imp. Activos"
-        },
-        {
-            "id" : 4,
-            "icon" : "patente.png",
-            "title" : "Predio Rústico"
-        },
-        {
-            "id" : 5,
-            "icon" : "alcabalas.png",
-            "title" : "Pavimentaciòn"
+            "title" : "Predio Urbano",
+            "value" : 0
         },
         {
             "id" : 12,
             "icon" : "agua.png",
-            "title" : "Agua"
+            "title" : "Agua",
+            "value" : 12
+        },
+        {
+            "id" : 3,
+            "icon" : "multas_transito.png",
+            "title" : "Imp. Activos",
+            "value" : 0
+        },
+        {
+            "id" : 4,
+            "icon" : "patente.png",
+            "title" : "Predio Rústico",
+            "value" : 0
+        },
+        {
+            "id" : 5,
+            "icon" : "alcabalas.png",
+            "title" : "Pavimentaciòn",
+            "value" : 0
         },
         {
             "id" : 13,
             "icon" : "multas_transito.png",
-            "title" : "Multas Tránsito"
-        },
-        {
-            "id" : 14,
-            "icon" : "patente.png",
-            "title" : "Patente"
+            "title" : "Multas Tránsito",
+            "value" : 8
         },
         {
             "id" : 15,
             "icon" : "alcabalas.png",
-            "title" : "Alcabalas"
+            "title" : "Alcabalas",
+            "value" : 35
         },
         {
             "id" : 16,
             "icon" : "patente.png",
-            "title" : "CEM"
+            "title" : "CEM",
+            "value" : 0
         },
         {
             "id" : 17,
             "icon" : "alcabalas.png",
-            "title" : "Solares no Edif"
+            "title" : "Solares no Edif",
+            "value" : 0
+        },
+        {
+            "id" : 14,
+            "icon" : "patente.png",
+            "title" : "Patente",
+            "value" : 5
         }
     ]
 }

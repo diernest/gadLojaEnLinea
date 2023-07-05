@@ -18,35 +18,49 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _getScaffoldBody(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          const BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.red),
-              label: "Home",
-              backgroundColor: Colors.red),
-          BottomNavigationBarItem(
-              icon: Badge(
-                  badgeStyle: BadgeStyle(
-                      borderRadius: BorderRadius.circular(100),
-                      shape: BadgeShape.circle,
-                      badgeColor: Colors.black),
-                  badgeContent: Center(child:
-                      Consumer<CartModel>(builder: (context, cart, child) {
-                    return Text(
-                      "${cart.totalItems}",
-                      style: TextStyle(color: Colors.white),
-                    );
-                  })),
-                  child: Icon(Icons.shopping_cart)),
-              label: "Carrito"),
-        ],
-        onTap: ((value) {
-          setState(() {
-            currentIndex = value;
-          });
-        }),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(flexibleSpace: Container(
+          height: 80,
+          color: Colors.red,
+          child: Center(
+            child: Image.asset(
+              "assets/img/logo_gad.png",
+              width: 100,
+              height: 40,
+              fit: BoxFit.scaleDown,
+            ),
+          ),
+        )),
+        body: _getScaffoldBody(),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            const BottomNavigationBarItem(
+                icon: Icon(Icons.home, color: Colors.red),
+                label: "Home",
+                backgroundColor: Colors.red),
+            BottomNavigationBarItem(
+                icon: Badge(
+                    badgeStyle: BadgeStyle(
+                        borderRadius: BorderRadius.circular(100),
+                        shape: BadgeShape.circle,
+                        badgeColor: Colors.black),
+                    badgeContent: Center(child:
+                        Consumer<CartModel>(builder: (context, cart, child) {
+                      return Text(
+                        "${cart.totalItems}",
+                        style: TextStyle(color: Colors.white),
+                      );
+                    })),
+                    child: Icon(Icons.shopping_cart)),
+                label: "Carrito"),
+          ],
+          onTap: ((value) {
+            setState(() {
+              currentIndex = value;
+            });
+          }),
+        ),
       ),
     );
   }

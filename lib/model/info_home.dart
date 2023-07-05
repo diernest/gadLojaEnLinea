@@ -3,8 +3,8 @@ import 'package:gad_loja/model/my_item.dart';
 
 class InfoHome {
   late List<MyBanner> banners;
-  late List<MyItem> deudas;
-  late List<MyItem> serviciosMunicipales;
+  late List<MyItem> debts;
+  late List<MyItem> allServices;
 
   InfoHome.fromJson(Map<String, dynamic> parsedJson) {
     print(parsedJson);
@@ -14,16 +14,16 @@ class InfoHome {
       banners.add(result);
     }
 
-    deudas = [];
+    debts = [];
     for (int i = 0; i < parsedJson['deudas'].length; i++) {
       MyItem result = MyItem.fromJson(parsedJson['deudas'][i]);
-      deudas.add(result);
+      debts.add(result);
     }
 
-    serviciosMunicipales = [];
+    allServices = [];
     for (int i = 0; i < parsedJson['servicios'].length; i++) {
       MyItem result = MyItem.fromJson(parsedJson['servicios'][i]);
-      serviciosMunicipales.add(result);
+      allServices.add(result);
     }
   }
 }
