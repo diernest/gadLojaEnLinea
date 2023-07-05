@@ -23,7 +23,6 @@ class _HomeState extends State<Home> {
   dynamic parsedJsonCategories;
   late InfoHome infoHome;
   List<MyBanner> banners = [];
-  List<MyItem> debts = [];
   List<MyItem> allServices = [];
   bool loadingBanners = true;
   @override
@@ -43,16 +42,16 @@ class _HomeState extends State<Home> {
               : buildCarrouselHome(),
           loadingBanners
               ? const SliverToBoxAdapter(child: Text("loading..."))
-              : debts.isNotEmpty ? SliverToBoxAdapter(
+              : allServices.isNotEmpty && allServices.where((element) => element.value > 0).isNotEmpty ? SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              child: Text("Valores por pagar (${debts.length})",
+              child: Text("Valores por pagar (${allServices.where((element) => element.value > 0).length})",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
             ),
           ) : const SliverToBoxAdapter(),
           loadingBanners
               ? const SliverToBoxAdapter(child: Text("loading..."))
-              : debts.isNotEmpty ? SliverGrid(
+              : allServices.isNotEmpty && allServices.where((element) => element.value > 0).isNotEmpty? SliverGrid(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 180.0,
                     mainAxisSpacing: 8.0,
@@ -61,12 +60,12 @@ class _HomeState extends State<Home> {
                   ),
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                      return CardItem(myItem: debts[index]);
+                      return CardItem(myItem: allServices.where((element) => element.value > 0).toList()[index]);
                     },
-                    childCount: debts.length,
+                    childCount: allServices.where((element) => element.value > 0).length,
                   ),
                 ) : const SliverToBoxAdapter(),
-          debts.isNotEmpty
+          allServices.isNotEmpty
               ? SliverToBoxAdapter(
                   child: Center(child:
                       Consumer<CartModel>(builder: (context, cart, child) {
@@ -112,14 +111,15 @@ class _HomeState extends State<Home> {
 
     List<MyItem> currentCart =
         Provider.of<CartModel>(context, listen: false).myItems;
-    debts = infoHome.debts;
+
     allServices = infoHome.allServices;
-    for (var elementDeudas in debts) {
-      currentCart.forEach((elementCart) {
-        if (elementCart.id == elementDeudas.id) {
-          elementDeudas.isAdd = true;
+    //Verifico si ya está en carrito
+    for (var inCart in currentCart ) {
+      for (var services in allServices) {
+        if (inCart.id == services.id) {
+          services.isAdd = true;
         }
-      });
+      }
     }
 
     setState(() {

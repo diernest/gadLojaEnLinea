@@ -14,15 +14,9 @@ class InfoHome {
       banners.add(result);
     }
 
-    debts = [];
-    for (int i = 0; i < parsedJson['deudas'].length; i++) {
-      MyItem result = MyItem.fromJson(parsedJson['deudas'][i]);
-      debts.add(result);
-    }
-
     allServices = [];
-    for (int i = 0; i < parsedJson['servicios'].length; i++) {
-      MyItem result = MyItem.fromJson(parsedJson['servicios'][i]);
+    for (int i = 0; i < parsedJson['services'].length; i++) {
+      MyItem result = MyItem.fromJson(parsedJson['services'][i]);
       allServices.add(result);
     }
   }

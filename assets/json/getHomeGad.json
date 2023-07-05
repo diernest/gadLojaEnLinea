@@ -13,33 +13,7 @@
             "description" : "San José, Loja – Franciscanos en Ecuador"
         }
     ],
-    "deudas" : [
-        {
-            "id" : 12,
-            "icon" : "agua.png",
-            "title" : "Agua",
-            "value" : 12
-        },
-        {
-            "id" : 13,
-            "icon" : "multas_transito.png",
-            "title" : "Multas Tránsito",
-            "value" : 8
-        },
-        {
-            "id" : 14,
-            "icon" : "patente.png",
-            "title" : "Patente",
-            "value" : 5
-        },
-        {
-            "id" : 15,
-            "icon" : "alcabalas.png",
-            "title" : "Alcabalas",
-            "value" : 35
-        }
-    ],
-    "servicios" : [
+    "services" : [
         {
             "id" : 2,
             "icon" : "agua.png",
