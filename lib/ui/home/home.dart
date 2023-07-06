@@ -25,6 +25,7 @@ class _HomeState extends State<Home> {
   List<MyBanner> banners = [];
   List<MyItem> allServices = [];
   bool loadingBanners = true;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -42,61 +43,87 @@ class _HomeState extends State<Home> {
               : buildCarrouselHome(),
           loadingBanners
               ? const SliverToBoxAdapter(child: Text("loading..."))
-              : allServices.isNotEmpty && allServices.where((element) => element.value > 0).isNotEmpty ? SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              child: Text("Valores por pagar (${allServices.where((element) => element.value > 0).length})",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-            ),
-          ) : const SliverToBoxAdapter(),
+              : allServices.isNotEmpty &&
+                      allServices
+                          .where((element) => element.value > 0)
+                          .isNotEmpty
+                  ? SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 8),
+                        child: Text(
+                          "Servicios por pagar (${allServices.where((element) => element.value > 0).length})",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  : const SliverToBoxAdapter(),
           loadingBanners
               ? const SliverToBoxAdapter(child: Text("loading..."))
-              : allServices.isNotEmpty && allServices.where((element) => element.value > 0).isNotEmpty? SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 180.0,
-                    mainAxisSpacing: 8.0,
-                    crossAxisSpacing: 8.0,
-                    childAspectRatio: 1,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return CardItem(myItem: allServices.where((element) => element.value > 0).toList()[index]);
-                    },
-                    childCount: allServices.where((element) => element.value > 0).length,
-                  ),
-                ) : const SliverToBoxAdapter(),
+              : allServices.isNotEmpty &&
+                      allServices
+                          .where((element) => element.value > 0)
+                          .isNotEmpty
+                  ? SliverGrid(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 180.0,
+                        mainAxisSpacing: 8.0,
+                        crossAxisSpacing: 8.0,
+                        childAspectRatio: 1,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                          return CardItem(
+                              myItem: allServices
+                                  .where((element) => element.value > 0)
+                                  .toList()[index]);
+                        },
+                        childCount: allServices
+                            .where((element) => element.value > 0)
+                            .length,
+                      ),
+                    )
+                  : const SliverToBoxAdapter(),
           allServices.isNotEmpty
               ? SliverToBoxAdapter(
                   child: Center(child:
                       Consumer<CartModel>(builder: (context, cart, child) {
-                    return Text("Total price: ${cart.totalPrice}");
+                    return Text("Total price: ${cart.getSubtotal}");
                   })),
                 )
               : const SliverToBoxAdapter(),
           loadingBanners
               ? const SliverToBoxAdapter(child: Text("loading..."))
-              : allServices.isNotEmpty ? SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              child: Text("Servicios Municipales",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-            ),
-          ) : const SliverToBoxAdapter(),
-          allServices.isNotEmpty ?
-          SliverGrid(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200.0,
-              mainAxisSpacing: 10.0,
-              crossAxisSpacing: 10.0,
-              childAspectRatio: 1.0,
-            ),
-            delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                return CardItem(myItem: allServices[index]);
-              },
-              childCount: allServices.length,
-            ),
-          )
+              : allServices.isNotEmpty
+                  ? SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 8),
+                        child: Text(
+                          "Servicios Municipales",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    )
+                  : const SliverToBoxAdapter(),
+          allServices.isNotEmpty
+              ? SliverGrid(
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 200.0,
+                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 10.0,
+                    childAspectRatio: 1.0,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return CardItem(myItem: allServices[index]);
+                    },
+                    childCount: allServices.length,
+                  ),
+                )
               : const SliverToBoxAdapter()
         ],
       ),
@@ -114,7 +141,7 @@ class _HomeState extends State<Home> {
 
     allServices = infoHome.allServices;
     //Verifico si ya está en carrito
-    for (var inCart in currentCart ) {
+    for (var inCart in currentCart) {
       for (var services in allServices) {
         if (inCart.id == services.id) {
           services.isAdd = true;
@@ -126,14 +153,12 @@ class _HomeState extends State<Home> {
       banners = infoHome.banners;
       loadingBanners = false;
     });
-
   }
 
   Widget buildCarrouselHome() {
     List<Widget> itms = [];
     for (var element in banners) {
-      itms.add(
-          MyCarrousel(url: element.url, description: element.description));
+      itms.add(MyCarrousel(url: element.url, description: element.description));
     }
 
     return SliverToBoxAdapter(
@@ -141,11 +166,11 @@ class _HomeState extends State<Home> {
           options: CarouselOptions(
             height: 160,
             showIndicator: true,
-            slideIndicator: const CircularSlideIndicator(currentIndicatorColor: Colors.red,
+            slideIndicator: const CircularSlideIndicator(
+              currentIndicatorColor: Colors.red,
             ),
           ),
           items: itms),
     );
   }
-
 }

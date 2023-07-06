@@ -5,13 +5,21 @@ class CartModel extends ChangeNotifier {
   /// Internal, private state of the cart. Stores the ids of each item.
   final List<MyItem> items = [];
 
+  final double iva = 0.0;
+  final double comision = 0.50;
+
   /// List of items in the cart.
   List<MyItem> get myItems => items;
 
   /// The current total price of all items.
-  int get totalPrice =>
+  int get getSubtotal =>
       items.fold(0, (total, current) => total + current.value);
 
+  double get getTotal => getSubtotal + iva + comision;
+
+  double get getIva => iva;
+
+  double get getComision => comision;
 
   int get totalItems => items.length;
 

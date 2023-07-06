@@ -35,14 +35,14 @@ class CardItem extends StatelessWidget {
                   child:  Consumer<CartModel>(
                       builder: (context, cart, child) {
                         return LabelItem(
-                          customColor: colorItem,
-                          text: myItem.isAdd ? "REMOVER -" : "AGREGAR +",
+                          customColor:  myItem.isAdd ? colorItem.withOpacity(0.7) : colorItem,
+                          text: myItem.isAdd ? "QUITAR -" : "AGREGAR +",
                         );
                       })
                 )
               : LabelItem(
             customColor: colorItem,
-            text: "AL DIA",
+            text: "SIN DEUDAS",
           ),
           Align(
             alignment: Alignment.center,

@@ -18,61 +18,81 @@
             "id" : 2,
             "icon" : "agua.png",
             "title" : "Predio Urbano",
+            "cod" : "890323908",
+            "description" : "Pago predio urbano, año 2023",
             "value" : 0
         },
         {
             "id" : 12,
             "icon" : "agua.png",
             "title" : "Agua",
+            "cod" : "110323908",
+            "description" : "Pago servicio de agua potable, mes junio/2023",
             "value" : 12
         },
         {
             "id" : 3,
             "icon" : "multas_transito.png",
             "title" : "Imp. Activos",
+            "cod" : "890453908",
+            "description" : "Multa",
             "value" : 0
         },
         {
             "id" : 4,
             "icon" : "patente.png",
             "title" : "Predio Rústico",
-            "value" : 0
+            "value" : 0,
+            "cod" : "875323908",
+            "description" : "SN"
         },
         {
             "id" : 5,
             "icon" : "alcabalas.png",
             "title" : "Pavimentaciòn",
-            "value" : 0
+            "value" : 0,
+            "cod" : "890329878",
+            "description" : "SN"
         },
         {
             "id" : 13,
             "icon" : "multas_transito.png",
             "title" : "Multas Tránsito",
-            "value" : 8
+            "value" : 8,
+            "cod" : "943323965",
+            "description" : "Multa de tránsito, cod 943323965, placa LCS-0785"
         },
         {
             "id" : 15,
             "icon" : "alcabalas.png",
             "title" : "Alcabalas",
-            "value" : 35
+            "value" : 35,
+            "cod" : "873323454",
+            "description" : "Alcabala propiedad horizontal, venta total 500m2"
         },
         {
             "id" : 16,
             "icon" : "patente.png",
             "title" : "CEM",
-            "value" : 0
+            "value" : 0,
+            "cod" : "873323454",
+            "description" : "Alcabala propiedad horizontal, venta total 500m2"
         },
         {
             "id" : 17,
             "icon" : "alcabalas.png",
             "title" : "Solares no Edif",
-            "value" : 0
+            "value" : 0,
+            "cod" : "873323454",
+            "description" : "Alcabala propiedad horizontal, venta total 500m2"
         },
         {
             "id" : 14,
             "icon" : "patente.png",
             "title" : "Patente",
-            "value" : 5
+            "value" : 5,
+            "cod" : "763323674",
+            "description" : "Pago patente por servicios profesionales, año 2023"
         }
     ]
 }
