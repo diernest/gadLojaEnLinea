@@ -1,7 +1,10 @@
 import 'package:badges/badges.dart' as MyBadge;
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gad_loja/model/provider/cart.dart';
+import 'package:gad_loja/repository/gad_repository.dart';
 import 'package:gad_loja/ui/cart/myCart.dart';
+import 'package:gad_loja/ui/home/cubit/home_cubic.dart';
 import 'package:gad_loja/ui/home/home.dart';
 import 'package:provider/provider.dart';
 
@@ -73,7 +76,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   Widget callPage(int current) {
     switch (current) {
       case 0:
-        return Home();
+        return BlocProvider(create: (context) => HomeCubit(GadRepository()),
+            child: Home());
       case 1:
         return MyCart();
       default:
