@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as MyBadge;
 import 'package:flutter/material.dart';
 import 'package:gad_loja/model/provider/cart.dart';
 import 'package:gad_loja/ui/cart/myCart.dart';
@@ -40,10 +40,10 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                 label: "Home",
                 backgroundColor: Colors.red),
             BottomNavigationBarItem(
-                icon: Badge(
-                    badgeStyle: BadgeStyle(
+                icon: MyBadge.Badge(
+                    badgeStyle: MyBadge.BadgeStyle(
                         borderRadius: BorderRadius.circular(100),
-                        shape: BadgeShape.circle,
+                        shape: MyBadge.BadgeShape.circle,
                         badgeColor: Colors.black),
                     badgeContent: Center(child:
                         Consumer<CartModel>(builder: (context, cart, child) {

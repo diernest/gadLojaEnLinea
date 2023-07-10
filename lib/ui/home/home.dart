@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
                             horizontal: 8, vertical: 8),
                         child: Text(
                           "Servicios por pagar (${allServices.where((element) => element.value > 0).length})",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -68,10 +68,10 @@ class _HomeState extends State<Home> {
                   ? SliverGrid(
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 180.0,
-                        mainAxisSpacing: 8.0,
-                        crossAxisSpacing: 8.0,
-                        childAspectRatio: 1,
+                            maxCrossAxisExtent: 200.0,
+                            mainAxisSpacing: 10.0,
+                            crossAxisSpacing: 10.0,
+                            childAspectRatio: 1.0,
                       ),
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
@@ -97,9 +97,9 @@ class _HomeState extends State<Home> {
           loadingBanners
               ? const SliverToBoxAdapter(child: Text("loading..."))
               : allServices.isNotEmpty
-                  ? SliverToBoxAdapter(
+                  ? const SliverToBoxAdapter(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                             horizontal: 8, vertical: 8),
                         child: Text(
                           "Servicios Municipales",

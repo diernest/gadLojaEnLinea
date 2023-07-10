@@ -11,8 +11,9 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color colorItem = myItem.value > 0 ? Colors.red : Color(0XFFC89708);
+    double widthCard = MediaQuery.of(context).size.width;
     return Card(
-      margin: EdgeInsets.all(8.0),
+
       color: Colors.white,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
