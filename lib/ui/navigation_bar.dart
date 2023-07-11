@@ -1,15 +1,13 @@
 import 'package:badges/badges.dart' as MyBadge;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gad_loja/model/provider/cart.dart';
-import 'package:gad_loja/repository/gad_repository.dart';
+import 'package:gad_loja/ui/cart/cubit/cart_cubic.dart';
 import 'package:gad_loja/ui/cart/myCart.dart';
-import 'package:gad_loja/ui/home/cubit/home_cubic.dart';
 import 'package:gad_loja/ui/home/home.dart';
-import 'package:provider/provider.dart';
 
 class MyNavigationBar extends StatefulWidget {
   final int current;
+
   const MyNavigationBar({Key? key, required this.current}) : super(key: key);
 
   @override
@@ -23,7 +21,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(flexibleSpace: Container(
+        appBar: AppBar(
+            flexibleSpace: Container(
           height: 80,
           color: Colors.red,
           child: Center(
@@ -48,14 +47,16 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
                         borderRadius: BorderRadius.circular(100),
                         shape: MyBadge.BadgeShape.circle,
                         badgeColor: Colors.black),
-                    badgeContent: Center(child:
-                        Consumer<CartModel>(builder: (context, cart, child) {
-                      return Text(
-                        "${cart.totalItems}",
-                        style: TextStyle(color: Colors.white),
-                      );
-                    })),
-                    child: Icon(Icons.shopping_cart)),
+                    badgeContent: Center(
+                        child: BlocBuilder(
+                            bloc: BlocProvider.of<CartCubic>(context),
+                            builder: (context, snapshot) {
+                              return Text(
+                                "${context.read<CartCubic>().totalItems}",
+                                style: const TextStyle(color: Colors.white),
+                              );
+                            })),
+                    child: const Icon(Icons.shopping_cart)),
                 label: "Carrito"),
           ],
           onTap: ((value) {
@@ -72,16 +73,14 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
     return callPage(currentIndex);
   }
 
-  /// Set a type current number a layout class
   Widget callPage(int current) {
     switch (current) {
       case 0:
-        return BlocProvider(create: (context) => HomeCubit(GadRepository()),
-            child: Home());
+        return const Home();
       case 1:
-        return MyCart();
+        return const MyCart();
       default:
-        return Home();
+        return const Home();
     }
   }
 }

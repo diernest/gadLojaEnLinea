@@ -19,13 +19,13 @@ class CartLabel extends StatelessWidget {
               title,
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               width: 8,
             ),
             Expanded(
                 child: Text(
               subtitle,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.normal,
               ),

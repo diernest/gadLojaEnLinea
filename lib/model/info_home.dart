@@ -7,8 +7,7 @@ class InfoHome {
   late List<MyItem> allServices;
 
   InfoHome.fromJson(Map<String, dynamic> parsedJson) {
-    print(parsedJson);
-    banners = [];
+     banners = [];
     for (int i = 0; i < parsedJson['banners'].length; i++) {
       MyBanner result = MyBanner.fromJson(parsedJson['banners'][i]);
       banners.add(result);

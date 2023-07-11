@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gad_loja/model/my_item.dart';
-import 'package:gad_loja/model/provider/cart.dart';
+import 'package:gad_loja/ui/cart/cubit/cart_cubic.dart';
 import 'package:gad_loja/ui/cart/widgets/cart_label.dart';
-import 'package:provider/provider.dart';
 
 class CartItem extends StatelessWidget {
   final MyItem item;
@@ -36,14 +36,14 @@ class CartItem extends StatelessWidget {
               alignment: Alignment.topRight,
               child: InkWell(
                 onTap: () {
-                  var cart = context.read<CartModel>();
+                  var cart = context.read<CartCubic>();
                   cart.remove(item);
                 },
                 child: Container(
                   color: Colors.transparent,
                   width: 50,
                   height: 50,
-                  child: Icon(
+                  child: const Icon(
                     Icons.delete,
                     color: Colors.red,
                   ),

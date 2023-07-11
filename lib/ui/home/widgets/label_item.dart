@@ -4,7 +4,7 @@ class LabelItem extends StatelessWidget {
   final String text;
   final Color customColor;
 
-  LabelItem({Key? key, required this.text, required this.customColor})
+  const LabelItem({Key? key, required this.text, required this.customColor})
       : super(key: key);
 
   @override
@@ -17,7 +17,7 @@ class LabelItem extends StatelessWidget {
               color: customColor,
             ),
             color: customColor,
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+            borderRadius: const BorderRadius.all(Radius.circular(10))),
         width: double.infinity,
         height: 40,
         child: Center(

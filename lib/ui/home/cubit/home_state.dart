@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:gad_loja/model/info_home.dart';
-import 'package:gad_loja/model/my_item.dart';
+
 
 abstract class HomeState extends Equatable{}
 
