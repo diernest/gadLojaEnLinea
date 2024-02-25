@@ -4,13 +4,14 @@ import 'package:gad_loja/model/info_home.dart';
 import 'package:gad_loja/model/my_banner.dart';
 import 'package:gad_loja/model/my_item.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
+import 'package:gad_loja/ui/cart/cubit/cart_cubic.dart';
 import 'package:gad_loja/ui/home/cubit/home_cubic.dart';
 import 'package:gad_loja/ui/home/cubit/home_state.dart';
 import 'package:gad_loja/ui/home/widgets/card_item.dart';
 import 'package:gad_loja/ui/home/widgets/carrousel_home.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -22,7 +23,7 @@ class _HomeState extends State<Home> {
   List<MyBanner> banners = [];
   List<MyItem> allServices = [];
   bool loadingBanners = true;
-
+  List<MyItem> currentListCart = [];
 
   @override
   void initState() {
@@ -37,15 +38,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state){
+        builder: (context, state) {
           if (state is InitHomeState || state is LoadingHomeState) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          }else if(state is ResponseHomeState){
+          } else if (state is ResponseHomeState) {
             return CustomScrollView(
               slivers: [
-                  buildCarrouselHome(state.infoHome.banners),
+                buildCarrouselHome(state.infoHome.banners),
                 SliverGrid(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200.0,
@@ -54,16 +55,23 @@ class _HomeState extends State<Home> {
                     childAspectRatio: 1.0,
                   ),
                   delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                      return CardItem(myItem: state.infoHome.allServices[index]);
+                    (BuildContext context, int index) {
+                      var currentItem = state.infoHome.allServices[index];
+                      if(context.read<CartCubic>().existInCart(currentItem.id)) {
+                        currentItem.isAdd = true;
+                      }
+                      return CardItem(
+                          myItem: currentItem);
                     },
                     childCount: state.infoHome.allServices.length,
                   ),
                 )
               ],
             );
-          }else if(state is ErrorHomeState){
-            return Center(child: Text(state.msjError),);
+          } else if (state is ErrorHomeState) {
+            return Center(
+              child: Text(state.msjError),
+            );
           }
           return const Center(
             child: CircularProgressIndicator(),
@@ -77,7 +85,8 @@ class _HomeState extends State<Home> {
   Widget buildCarrouselHome(List<MyBanner> banners) {
     List<Widget> items = [];
     for (var element in banners) {
-      items.add(MyCarrousel(url: element.url, description: element.description));
+      items
+          .add(MyCarrousel(url: element.url, description: element.description));
     }
 
     return SliverToBoxAdapter(

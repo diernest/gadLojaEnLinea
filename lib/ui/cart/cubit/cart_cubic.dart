@@ -21,6 +21,16 @@ class CartCubic extends Cubit<CartState>{
 
   int get totalItems => listCart.length;
 
+  bool existInCart(int id){
+    bool response = false;
+    for (var element in listCart) {
+      if (element.id == id) {
+        response = true;
+      }
+    }
+    return response;
+  }
+
   void addToCart(MyItem myItem) {
     emit(LoadingCartState());
     listCart.add(myItem);
@@ -36,4 +46,6 @@ class CartCubic extends Cubit<CartState>{
       emit(InitialCartState());
     }
   }
+
+
 }

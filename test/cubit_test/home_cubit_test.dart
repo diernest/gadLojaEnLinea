@@ -4,7 +4,6 @@ import 'package:gad_loja/model/info_home.dart';
 import 'package:gad_loja/repository/gad_repository.dart';
 import 'package:gad_loja/ui/home/cubit/home_cubic.dart';
 import 'package:gad_loja/ui/home/cubit/home_state.dart';
-import 'package:gad_loja/ui/home/home.dart';
 import 'package:mockito/mockito.dart';
 
 class MockGadRepository extends Mock implements GadRepository {}

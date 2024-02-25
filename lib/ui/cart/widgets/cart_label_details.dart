@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 class CartLabelDetails extends StatelessWidget {
   final String title;
   final String value;
-  const CartLabelDetails({Key? key, required this.title, required this.value}) : super(key: key);
+  const CartLabelDetails({super.key, required this.title, required this.value});
 
   @override
   Widget build(BuildContext context) {

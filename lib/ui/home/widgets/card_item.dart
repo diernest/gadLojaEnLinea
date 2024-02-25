@@ -6,7 +6,7 @@ import 'package:gad_loja/ui/home/widgets/label_item.dart';
 
 class CardItem extends StatelessWidget {
   final MyItem myItem;
-  const CardItem({Key? key, required this.myItem}) : super(key: key);
+  const CardItem({super.key, required this.myItem});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class MyCarrousel extends StatelessWidget {
   final String url;
   final String description;
-  const MyCarrousel({Key? key, required this.url, required this.description}) : super(key: key);
+  const MyCarrousel({super.key, required this.url, required this.description});
 
   @override
   Widget build(BuildContext context) {

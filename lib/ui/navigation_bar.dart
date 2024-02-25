@@ -8,7 +8,7 @@ import 'package:gad_loja/ui/home/home.dart';
 class MyNavigationBar extends StatefulWidget {
   final int current;
 
-  const MyNavigationBar({Key? key, required this.current}) : super(key: key);
+  const MyNavigationBar({super.key, required this.current});
 
   @override
   State<MyNavigationBar> createState() => _MyNavigationBarState();

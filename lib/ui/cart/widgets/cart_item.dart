@@ -6,7 +6,7 @@ import 'package:gad_loja/ui/cart/widgets/cart_label.dart';
 
 class CartItem extends StatelessWidget {
   final MyItem item;
-  const CartItem({Key? key, required this.item}) : super(key: key);
+  const CartItem({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class CartItem extends StatelessWidget {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
           side: BorderSide(width: 1.0, color: Color(0XFFF1F1F1))),
-      child: Container(
+      child: SizedBox(
         height: 110,
         //color: Colors.teal,
         child: Stack(

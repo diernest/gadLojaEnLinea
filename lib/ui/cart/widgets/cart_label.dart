@@ -4,8 +4,7 @@ class CartLabel extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const CartLabel({Key? key, required this.title, required this.subtitle})
-      : super(key: key);
+  const CartLabel({super.key, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class CartLabel extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               width: 8,

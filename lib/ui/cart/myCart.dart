@@ -6,7 +6,7 @@ import 'package:gad_loja/ui/cart/widgets/cart_label_details.dart';
 import 'cubit/cart_state.dart';
 
 class MyCart extends StatefulWidget {
-  const MyCart({Key? key}) : super(key: key);
+  const MyCart({super.key});
 
   @override
   State<MyCart> createState() => _MyCartState();
@@ -62,7 +62,7 @@ class _MyCartState extends State<MyCart> {
           }
           return const Center(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Text("¡Aún no has agregado un servicio!",
                   style: TextStyle(
                     fontSize: 25,

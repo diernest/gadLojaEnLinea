@@ -4,8 +4,7 @@ class LabelItem extends StatelessWidget {
   final String text;
   final Color customColor;
 
-  const LabelItem({Key? key, required this.text, required this.customColor})
-      : super(key: key);
+  const LabelItem({super.key, required this.text, required this.customColor});
 
   @override
   Widget build(BuildContext context) {
